@@ -9,6 +9,11 @@ function randomColorComponent() {
  * Creates a random image
  */
 module.exports = function(width, height, callback) {
+    
+    if (typeof width !== "number" || typeof height !== "number") {
+        return callback(Error('The parameters width and height must be numeric'), null)
+    }
+    
     var buffer = new Buffer(width * height * 3);
 
     for (var x = 0; x < width; x++) {
